@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floresta Encantada - Letícia</title>
+
+    <style>
+        /* ======= RESET ======= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* ======= TOPO – FLORESTA ENCANTADA ======= */
+        header {
+            background: linear-gradient(to bottom, #0a260f, #144d29);
+            color: #e5ffe8;
+            padding: 25px;
+            text-align: center;
+            border-bottom: 3px solid #1c7a3b;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .sgeek {
+            display: flex;
+            flex-direction: row;
+            box-shadow: 2px 2px 10px #ffffff4f;
+            border-radius: 15px;
+            background-color: #000;
+            justify-content: center;
+            align-items: center;
+            padding: 0px 5px;
+            transition: 0.3s ease;
+            cursor: pointer;
+            color: #fff;
+
+            &:hover {
+                transform: scale(1.15);
+            }
+        }
+
+        .geektext {
+            margin: 5px;
+            padding: 10px;
+            font-weight: bold;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            font-size: 18px;
+        }
+
+        .r {
+            margin-top: 3px;
+            color: red;
+        }
+
+        header img {
+            width: 65px;
+            height: 65px;
+            margin-left: 5px;
+        }
+
+        .gamelogo img {
+            width: 90px;
+            height: 90px;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: #caffd3;
+            text-shadow: 0 0 12px rgba(150, 255, 180, 0.7);
+            animation: floatTitle 3s ease-in-out infinite;
+            margin-top: 10px;
+        }
+
+        @keyframes floatTitle {
+            0% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-8px) scale(1.05);
+            }
+
+            100% {
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* ======= CORPO – FLORESTA ======= */
+        main {
+            background: linear-gradient(to bottom, #144d29, #0f321d);
+            color: #d6ffe3;
+            padding: 30px;
+            min-height: 60vh;
+            text-align: center;
+        }
+
+        /* ======= GRID DE IMAGENS ======= */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 600px;
+            margin: 40px auto;
+        }
+
+        .img-box {
+            width: 100%;
+            padding-top: 75%;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+
+        .img-box:hover {
+            transform: scale(1.07);
+            box-shadow: 0 8px 20px rgba(0, 80, 30, 0.7);
+        }
+
+        /* ======= GRADIENTE ENCANTADO ======= */
+        .img-gradient {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top,
+                    rgba(0, 0, 0, 0.7),
+                    rgba(0, 50, 20, 0.2),
+                    transparent);
+            transition: transform 0.3s ease;
+            pointer-events: none;
+        }
+
+        .img-title {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: #e2ffd9;
+            font-size: 1.1rem;
+            font-weight: bold;
+            z-index: 2;
+            text-shadow: 0 0 6px rgba(0, 255, 140, 0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .img-box:hover .img-title,
+        .img-box:hover .img-gradient {
+            transform: scale(1.07);
+        }
+
+        /* ======= BOTÃO – FLORESTA ======= */
+        .btn-play {
+            background-color: #1c7a3b;
+            color: #e8ffe8;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            margin-top: 30px;
+            cursor: pointer;
+            transition: 0.25s ease;
+            box-shadow: 0 0 10px rgba(0, 255, 140, 0.4);
+        }
+
+        .btn-play:hover {
+            background-color: #28a34e;
+            transform: scale(1.07);
+            box-shadow: 0 0 15px rgba(0, 255, 150, 0.7);
+        }
+
+        .btn-play:active {
+            transform: scale(0.92);
+        }
+
+        /* ======= RODAPÉ – FLORESTA ======= */
+        footer {
+            background: linear-gradient(to top, #0a260f, #133e25);
+            color: #cfffe0;
+            padding: 20px;
+            text-align: center;
+            border-top: 3px solid #1c7a3b;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        .f1 {
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .f2 {
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .f3 {
+            font-size: 0.75rem;
+            font-style: italic;
+        }
+
+        /* ======= RESPONSIVIDADE ======= */
+        @media (max-width: 600px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .sgeek {
+                padding: 10px;
+                max-width: 200px;
+                align-self: center;
+            }
+        }
+
+        /* ======= MODAL DE EXPANSÃO ======= */
+        #img-viewer {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 20, 5, 0.85);
+            backdrop-filter: blur(4px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        #img-viewer .viewer-content {
+            width: 80%;
+            max-width: 700px;
+            aspect-ratio: 1 / 1;
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px;
+            animation: expandImage 0.35s ease-out;
+            box-shadow: 0 0 20px rgba(0, 255, 140, 0.6);
+        }
+
+        @keyframes expandImage {
+            0% {
+                transform: scale(0.2);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            #img-viewer .viewer-content {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a class="sgeek" href="https://wa.me/551635110871?text=Ol%C3%A1,%20gostaria%20de%20agendar%20uma%20aula%20demo."
+            target="_blank">
+
+            <img src="supergeeks.png" alt="logo-supergeeks">
+
+            <div class="geektext">
+                <p class="b">Matrículas</p>
+                <p class="r">Abertas</p>
+            </div>
+        </a>
+        <h1>Floresta Encantada</h1>
+        <div class="gamelogo">
+            <img src="logo.png" alt="logo do jogo">
+        </div>
+    </header>
+
+    <main>
+        <p>Imagens com título e animação:</p>
+
+        <div class="grid">
+
+            <div class="img-box" style="background-image: url('char.png')" data-img="img1.jpg">
+                <div class="img-gradient"></div>
+                <div class="img-title">Personagem</div>
+            </div>
+
+            <div class="img-box" style="background-image: url('enemy.png')" data-img="img2.jpg">
+                <div class="img-gradient"></div>
+                <div class="img-title">Inimigo</div>
+            </div>
+
+            <div class="img-box" style="background-image: url('background.png')" data-img="img3.jpg">
+                <div class="img-gradient"></div>
+                <div class="img-title">Background</div>
+            </div>
+
+            <div class="img-box" style="background-image: url('tilemap.png')" data-img="img4.jpg">
+                <div class="img-gradient"></div>
+                <div class="img-title">Tilemap</div>
+            </div>
+
+        </div>
+
+        <button class="btn-play">Jogar agora</button>
+
+    </main>
+
+    <footer>
+        <p class="f1">Projeto desenvolvido por Meu Nome aqui</p>
+        <p class="f2">Produzido no Curso Natal IA - SuperGeeks Sertãozinho</p>
+        <p class="f3">Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- ======= MODAL DE EXPANSÃO ======= -->
+    <div id="img-viewer">
+        <div class="viewer-content"></div>
+    </div>
+
+    <script>
+        const viewer = document.getElementById("img-viewer");
+        const viewerBox = viewer.querySelector(".viewer-content");
+
+        document.querySelectorAll(".img-box").forEach(box => {
+            box.addEventListener("click", () => {
+                const img = box.getAttribute("data-img");
+                viewerBox.style.backgroundImage = `url('${img}')`;
+                viewer.style.display = "flex";
+            });
+        });
+
+        viewer.addEventListener("click", (e) => {
+            if (e.target === viewer) viewer.style.display = "none";
+        });
+    </script>
+
+</body>
+
+</html>
